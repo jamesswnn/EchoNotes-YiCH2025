@@ -271,7 +271,10 @@ struct SummaryView: View {
         
         // Replace with your actual Together.ai key
         
-        let apiKey = "1c9d354e4e20299d8dc7567cb4a73fcd31f615b257f31c54ec138dd01d58e2c1"
+        let apiKey = ""
+        guard !apiKey.isEmpty else {
+            throw NSError(domain: "EchoNotes.Configuration", code: 1, userInfo: [NSLocalizedDescriptionKey: "AI features require a secure server-side API proxy. Do not embed API keys in the app."])
+        }
         
         let url = URL(string: "https://api.together.ai/v1/chat/completions")!
         
